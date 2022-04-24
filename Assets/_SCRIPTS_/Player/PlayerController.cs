@@ -1,28 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
-using UnityEngine.Android;
-using UnityEngine.UIElements;
+
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Mov Velocidad y Fuerza")]
-    public float velocidad;
-    public float velocidadRotacion;
-    public float fuerzaSalto;
-    Vector3 movimiento;
+    public float _speed;
+    public float _speedRotation;
+    public float _jumpForce;
+    Vector3 _movement;
     
     [Header("Referencia")]
-    public Rigidbody rigi;
+    public Rigidbody _rigi;
     
     
     [Header("CheckGround")]
-    public Vector3 checkgroundPosition;
-    public bool isGround;
-    public float checkGroundRatio;
-    public LayerMask checkGroundMask;
+    public Vector3 _checkgroundPosition;
+    public bool _isGround;
+    public float _checkGroundRatio;
+    public LayerMask _checkGroundMask;
 
     [SerializeField] private Camera _playerCamera = default;
 
@@ -36,29 +31,29 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movimiento.x = Input.GetAxisRaw("Horizontal") * velocidad;
-        movimiento.z = Input.GetAxisRaw("Vertical") * velocidad;
-        movimiento = transform.TransformDirection(movimiento); // Transforma una direccion local en direccion del mundo.
+        _movement.x = Input.GetAxisRaw("Horizontal") * _speed;
+        _movement.z = Input.GetAxisRaw("Vertical") * _speed;
+        _movement = transform.TransformDirection(_movement); // Transforma una direccion local en direccion del mundo.
 
-        isGround = Physics.CheckSphere(transform.position + checkgroundPosition, checkGroundRatio, checkGroundMask);
+        _isGround = Physics.CheckSphere(transform.position + _checkgroundPosition, _checkGroundRatio, _checkGroundMask);
         
-        movimiento.y = rigi.velocity.y; // Permite que la gravedad siga funcionando
-        rigi.velocity = movimiento; // Aplicamos
+        _movement.y = _rigi.velocity.y; // Permite que la gravedad siga funcionando
+        _rigi.velocity = _movement; // Aplicamos
     }
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.Rotate(Vector3.up * (-velocidadRotacion * Time.deltaTime));
+            transform.Rotate(Vector3.up * (-_speedRotation * Time.deltaTime));
         }
         if (Input.GetKey(KeyCode.E))
         {
-            transform.Rotate(Vector3.up * (velocidadRotacion * Time.deltaTime));
+            transform.Rotate(Vector3.up * (_speedRotation * Time.deltaTime));
         }
-        if (Input.GetKey(KeyCode.Space) && isGround) // KeyDown y KeyUp no funcionan correctamente en el FixedUpdate
+        if (Input.GetKey(KeyCode.Space) && _isGround) // KeyDown y KeyUp no funcionan correctamente en el FixedUpdate
         {
-            rigi.AddForce(Vector3.up * fuerzaSalto, ForceMode.Impulse);
+            _rigi.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
     }
 
@@ -85,11 +80,25 @@ public class PlayerController : MonoBehaviour
 
     void Focusing(Interactable newFocusingThis)
     {
-        _focusingThis = newFocusingThis;
+        if (newFocusingThis != _focusingThis)
+        {
+            if (_focusingThis != null)
+            {
+                _focusingThis.OnDefocusing();
+            }
+            _focusingThis = newFocusingThis;
+        } 
+        newFocusingThis.OnFocusing(transform);
     }
 
     void NotFocusing()
     {
+        if (_focusingThis != null)
+        {
+            _focusingThis.OnDefocusing();
+        }
+        _focusingThis.OnDefocusing();
         _focusingThis = null;
+        
     }
 }

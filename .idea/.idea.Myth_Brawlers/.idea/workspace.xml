@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1e576318-ca22-43eb-a319-48504b34b3ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Myth_Brawlers/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Myth_Brawlers/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_SCRIPTS_/CameraController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_SCRIPTS_/CameraController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_SCRIPTS_/PersonajeMov3D.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_SCRIPTS_/PersonajeMov3D.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_SCRIPTS_/Interactable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_SCRIPTS_/Interactable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_SCRIPTS_/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_SCRIPTS_/Player/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +65,8 @@
       <workItem from="1650743859085" duration="832000" />
       <workItem from="1650745998163" duration="3795000" />
       <workItem from="1650770633041" duration="6498000" />
+      <workItem from="1650814305506" duration="226000" />
+      <workItem from="1650814598295" duration="3432000" />
     </task>
     <servers />
   </component>
