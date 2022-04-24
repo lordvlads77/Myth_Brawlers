@@ -22,12 +22,7 @@ public class CameraController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-    
+      
     public void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * _mouseSenseX * Time.deltaTime;
