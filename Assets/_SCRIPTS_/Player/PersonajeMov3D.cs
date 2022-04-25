@@ -23,12 +23,12 @@ public class PersonajeMov3D : MonoBehaviour
     {
         movimiento.x = Input.GetAxisRaw("Horizontal") * velocidad;
         movimiento.z = Input.GetAxisRaw("Vertical") * velocidad;
-        movimiento = transform.TransformDirection(movimiento); // Transforma una direccion local en direccion del mundo.
+        movimiento = transform.TransformDirection(movimiento);
 
         isGround = Physics.CheckSphere(transform.position + checkgroundPosition, checkGroundRatio, checkGroundMask);
         
-        movimiento.y = rigi.velocity.y; // Permite que la gravedad siga funcionando
-        rigi.velocity = movimiento; // Aplicamos
+        movimiento.y = rigi.velocity.y;
+        rigi.velocity = movimiento;
     }
 
     private void Update()
@@ -42,15 +42,9 @@ public class PersonajeMov3D : MonoBehaviour
         {
             transform.Rotate(Vector3.up * (velocidadRotacion * Time.deltaTime));
         }
-        if (Input.GetKey(KeyCode.Space) && isGround) // KeyDown y KeyUp no funcionan correctamente en el FixedUpdate
+        if (Input.GetKey(KeyCode.Space) && isGround)
         {
             rigi.AddForce(Vector3.up * fuerzaSalto, ForceMode.Impulse);
         }
     }
-
-    /*private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position + checkgroundPosition, checkGroundRatio);
-    }*/
 }
