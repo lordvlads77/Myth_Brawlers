@@ -99,6 +99,6 @@ public class PlayerController : MonoBehaviour
         }
         _focusingThis.OnDefocusing();
         _focusingThis = null;
-        
     }
 }
+

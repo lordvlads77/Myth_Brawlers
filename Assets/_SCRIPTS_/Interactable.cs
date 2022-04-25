@@ -11,7 +11,6 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        // This method is to be Overwritten || I truly need this comment please let me keep it *sweats*
         Debug.Log("Interacting with " + transform.name);
     }
 
