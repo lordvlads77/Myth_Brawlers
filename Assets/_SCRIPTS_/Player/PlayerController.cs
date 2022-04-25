@@ -33,12 +33,12 @@ public class PlayerController : MonoBehaviour
     {
         _movement.x = Input.GetAxisRaw("Horizontal") * _speed;
         _movement.z = Input.GetAxisRaw("Vertical") * _speed;
-        _movement = transform.TransformDirection(_movement); // Transforma una direccion local en direccion del mundo.
+        _movement = transform.TransformDirection(_movement);
 
         _isGround = Physics.CheckSphere(transform.position + _checkgroundPosition, _checkGroundRatio, _checkGroundMask);
         
-        _movement.y = _rigi.velocity.y; // Permite que la gravedad siga funcionando
-        _rigi.velocity = _movement; // Aplicamos
+        _movement.y = _rigi.velocity.y;
+        _rigi.velocity = _movement;
     }
 
     private void Update()
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(Vector3.up * (_speedRotation * Time.deltaTime));
         }
-        if (Input.GetKey(KeyCode.Space) && _isGround) // KeyDown y KeyUp no funcionan correctamente en el FixedUpdate
+        if (Input.GetKey(KeyCode.Space) && _isGround)
         {
             _rigi.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
